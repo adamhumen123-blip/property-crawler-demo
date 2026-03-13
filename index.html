@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Crawler Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fa;
+      color: #24292f;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #57606a;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px 8px 0;
+      padding: 12px 22px;
+      background: #2da44e;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .btn.secondary {
+      background: #0969da;
+    }
+    .section {
+      margin-top: 35px;
+    }
+    .card {
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+    pre {
+      background: #0d1117;
+      color: #e6edf3;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table th, table td {
+      border: 1px solid #d0d7de;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background: #f6f8fa;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #57606a;
+      font-size: 14px;
+    }
+    .workflow {
+      line-height: 2;
+      font-weight: bold;
+      color: #0969da;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>Property Crawler Demo</h1>
+      <p>
+        A Python-based property listing intelligence pipeline that scrapes listing pages,
+        performs reverse image matching, and discovers publicly available contact information.
+      </p>
+      <a class="btn" href="https://github.com/adamhumen123-blip/property-crawler-demo" target="_blank">View GitHub Repo</a>
+      <a class="btn secondary" href="Demo/urls.csv" target="_blank">View Sample Input CSV</a>
+      <a class="btn secondary" href="Demo/results_example.csv" target="_blank">View Sample Output CSV</a>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <div class="card workflow">
+        URLs CSV → Listing Scraper → Reverse Image Search → Contact Discovery → Results CSV
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Features</h2>
+      <div class="card">
+        <ul>
+          <li>Scrapes Airbnb, VRBO, Booking.com, and generic property sites</li>
+          <li>Extracts title, host, location, description, and listing photos</li>
+          <li>Performs reverse image search to find additional sources</li>
+          <li>Discovers public contact details such as owner, management company, email, and phone</li>
+          <li>Exports structured results to CSV or JSON</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Sample Input</h2>
+      <pre>url
+https://www.airbnb.com/rooms/12345678
+https://www.vrbo.com/9876543
+https://www.booking.com/hotel/us/beach-house.html</pre>
+    </div>
+
+    <div class="section">
+      <h2>Sample Output</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Listing</th>
+            <th>Owner</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Oceanfront Luxury Villa</td>
+            <td>Michael Roberts</td>
+            <td>info@bluecoastrentals.com</td>
+            <td>+1-305-555-4412</td>
+          </tr>
+          <tr>
+            <td>Mountain View Cabin Retreat</td>
+            <td>John Smith</td>
+            <td>john@mountaincabins.com</td>
+            <td>+1-720-555-1123</td>
+          </tr>
+          <tr>
+            <td>Sunny Beach House Resort</td>
+            <td>Linda Martinez</td>
+            <td>contact@sunrisehospitality.com</td>
+            <td>+1-619-555-7788</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Run Locally</h2>
+      <pre>pip install -r requirements.txt
+playwright install chromium
+python property_crawler.py --input Demo/urls.csv --output results.csv</pre>
+    </div>
+
+    <div class="footer">
+      Built as a demo for property listing research automation.
+    </div>
+  </div>
+</body>
+</html>
